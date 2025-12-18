@@ -1,0 +1,13 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Env files (just in case)
+.env
+
+# Node / build files (agar future me use ho)
+node_modules/
+vendor/
