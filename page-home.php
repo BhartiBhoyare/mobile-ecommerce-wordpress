@@ -152,7 +152,9 @@ if ($category) :
 
               <?php foreach ($image_ids as $image_id) : ?>
                 <div class="swiper-slide">
-                  <?php echo wp_get_attachment_image($image_id, 'medium'); ?>
+                  <div class="custom-image">
+                    <?php echo wp_get_attachment_image($image_id, 'medium'); ?>
+                  </div>
                 </div>
               <?php endforeach; ?>
 

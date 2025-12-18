@@ -11,6 +11,7 @@ function mobile_theme_assets() {
 }
 add_action('wp_enqueue_scripts', 'mobile_theme_assets');
 
+
 function announcement_signup_customizer($wp_customize) {
 
     $wp_customize->add_section('announcement_bar', [
