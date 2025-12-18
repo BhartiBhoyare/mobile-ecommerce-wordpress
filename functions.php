@@ -69,26 +69,3 @@ function header_icons_customizer($wp_customize) {
     }
 }
 add_action('customize_register', 'header_icons_customizer');
-
-
-function mobile_ecommerce_load_swiper() {
-
-  // Swiper CSS
-  wp_enqueue_style(
-    'swiper-css',
-    'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css',
-    [],
-    '10.0'
-  );
-
-  // Swiper JS
-  wp_enqueue_script(
-    'swiper-js',
-    'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js',
-    [],
-    '10.0',
-    true
-  );
-
-}
-add_action('wp_enqueue_scripts', 'mobile_ecommerce_load_swiper');

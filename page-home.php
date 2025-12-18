@@ -1,10 +1,9 @@
 <?php
-/* Template Name: Home Page */
 get_header();
 ?>
 
 <?php
-// Get ACF fields
+
 $heading = get_field('heading');
 $subheading = get_field('subheading');
 $button_text = get_field('button_text');
@@ -46,7 +45,7 @@ $smallstar = get_field('smallstar');
     </div>
   </div>
 </div>
-<!-- Stars -->
+
 <div class="hero-image">
   <?php if( $bigstar ): ?>
     <img src="<?php echo esc_url($bigstar['url']); ?>" alt="<?php echo esc_attr($bigstar['alt']); ?>" class="star-big" />
@@ -58,7 +57,6 @@ $smallstar = get_field('smallstar');
   </div>
 </section>
 
-<!-- Brand logo section -->
 
 <section class="brand-logos-section">
     <div class="cont1">
@@ -106,7 +104,6 @@ $smallstar = get_field('smallstar');
 <?php
 $category = get_field('product_category');
 
-/* NORMALIZE CATEGORY */
 if (is_array($category)) {
   $term_ids = wp_list_pluck($category, 'term_id');
 } elseif (is_object($category)) {
@@ -118,7 +115,6 @@ if (is_array($category)) {
 if ($category) :
 ?>
 
-<!-- Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
 
 <section class="new-arrivals-section">
@@ -140,7 +136,6 @@ if ($category) :
       while ($query->have_posts()) : $query->the_post();
         global $product;
 
-        // Product images
         $gallery_ids = $product->get_gallery_image_ids();
         $featured_id = $product->get_image_id();
 
@@ -152,7 +147,6 @@ if ($category) :
       <div class="swiper-slide">
         <div class="product-card">
 
-          <!-- PRODUCT IMAGE SWIPER -->
           <div class="swiper product-image-swiper">
             <div class="swiper-wrapper">
 
@@ -206,13 +200,11 @@ if ($category) :
   </div>
 </section>
 
-<!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
-  // Outer product slider
   new Swiper('.new-arrivals-swiper', {
     slidesPerView: 2.1,
     spaceBetween: 12,
@@ -222,7 +214,6 @@ document.addEventListener('DOMContentLoaded', function () {
   watchSlidesProgress: true,
   });
 
-  // Inner image slider (PER PRODUCT)
   document.querySelectorAll('.product-image-swiper').forEach(swiperEl => {
     new Swiper(swiperEl, {
       slidesPerView: 1,

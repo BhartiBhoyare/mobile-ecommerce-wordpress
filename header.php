@@ -17,14 +17,13 @@
 
 <header class="mobile-header">
   <div class="header-left">
-    <!-- LEFT ICONS -->
+    
     <div class="header-icons left">
         <?php if ( get_theme_mod('hamburger_icon') ): ?>
             <img src="<?php echo esc_url(get_theme_mod('hamburger_icon')); ?>" class="icon">
         <?php endif; ?>
     </div>
 
-    <!-- LOGO (UNCHANGED) -->
     <div class="logo">
         <?php 
         if ( function_exists( 'the_custom_logo' ) ) {
@@ -34,7 +33,6 @@
     </div>
   </div>
 
-    <!-- RIGHT ICONS -->
     <div class="header-icons right">
         <?php if ( get_theme_mod('search_icon') ): ?>
             <img src="<?php echo esc_url(get_theme_mod('search_icon')); ?>" class="icon">
