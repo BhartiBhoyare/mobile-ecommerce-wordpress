@@ -6,46 +6,72 @@
   <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>> 
+    
 
-<div class="announcement-bar">
-    <span>Sign up and get 20% off to your first order.</span>
-    <a href="<?php echo esc_url( get_theme_mod('signup_link') ); ?>" class="signup-link">
-    <?php echo esc_html( get_theme_mod('signup_text', 'Sign Up Now') ); ?>
-</a>
-</div>
+<?php
+$home_id = get_option('page_on_front');
 
+$announcement_text     = get_field('announcement_text', $home_id);
+$announcement_btn_text = get_field('announcement_button_text', $home_id);
+$announcement_btn_link = get_field('announcement_button_link', $home_id);
+?>
+
+<?php if (!empty($announcement_text)): ?>
+  <div class="announcement-bar">
+    <span><?php echo esc_html($announcement_text); ?></span>
+
+    <?php if (!empty($announcement_btn_text)): ?>
+      <a 
+        href="<?php echo !empty($announcement_btn_link) ? esc_url($announcement_btn_link) : '#'; ?>" 
+        class="signup-link"
+      >
+        <?php echo esc_html($announcement_btn_text); ?>
+      </a>
+    <?php endif; ?>
+  </div>
+<?php endif; ?>
+
+
+
+
+<?php
+$header_logo     = get_field('logo');
+$hamburger_icon  = get_field('menu');
+$search_icon     = get_field('search');
+$profile_icon    = get_field('profile');
+$cart_icon       = get_field('cart');
+?>
 
 <header class="mobile-header">
   <div class="header-left">
     
     <div class="header-icons left">
-        <?php if ( get_theme_mod('hamburger_icon') ): ?>
-            <img src="<?php echo esc_url(get_theme_mod('hamburger_icon')); ?>" class="icon">
+        <?php if ($hamburger_icon): ?>
+            <img src="<?php echo esc_url($hamburger_icon['url']); ?>" class="icon" alt="Menu">
         <?php endif; ?>
     </div>
 
     <div class="logo">
-        <?php 
-        if ( function_exists( 'the_custom_logo' ) ) {
-            the_custom_logo();
-        }
-        ?>
+        <?php if ($header_logo): ?>
+            <img src="<?php echo esc_url($header_logo['url']); ?>" 
+                 alt="<?php echo esc_attr($header_logo['alt']); ?>">
+        <?php endif; ?>
     </div>
   </div>
 
-    <div class="header-icons right">
-        <?php if ( get_theme_mod('search_icon') ): ?>
-            <img src="<?php echo esc_url(get_theme_mod('search_icon')); ?>" class="icon">
+  <div class="header-icons right">
+        <?php if ($search_icon): ?>
+            <img src="<?php echo esc_url($search_icon['url']); ?>" class="icon" alt="Search">
         <?php endif; ?>
 
-        <?php if ( get_theme_mod('profile_icon') ): ?>
-            <img src="<?php echo esc_url(get_theme_mod('profile_icon')); ?>" class="icon">
+        <?php if ($profile_icon): ?>
+            <img src="<?php echo esc_url($profile_icon['url']); ?>" class="icon" alt="Profile">
         <?php endif; ?>
 
-        <?php if ( get_theme_mod('cart_icon') ): ?>
-            <img src="<?php echo esc_url(get_theme_mod('cart_icon')); ?>" class="icon">
+        <?php if ($cart_icon): ?>
+            <img src="<?php echo esc_url($cart_icon['url']); ?>" class="icon" alt="Cart">
         <?php endif; ?>
-    </div>
-
+  </div>
 </header>
+
 
